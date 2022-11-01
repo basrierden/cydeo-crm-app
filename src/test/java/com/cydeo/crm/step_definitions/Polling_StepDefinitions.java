@@ -21,6 +21,7 @@ public class Polling_StepDefinitions {
     ActivityStreamPage activityStreamPage = new ActivityStreamPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
     Faker faker = new Faker();
+    String questionUnique= faker.lorem().characters();
 
 
     @Given("user is on Activity Stream page and clicks on the POLL tab")
@@ -169,7 +170,7 @@ public class Polling_StepDefinitions {
 
     }
 
-    String questionUnique= faker.lorem().characters();
+
     @When("user creates a poll without answers")
     public void user_creates_a_poll_without_answers() {
         Driver.getDriver().switchTo().frame(activityStreamPage.messageTitleFrame);
