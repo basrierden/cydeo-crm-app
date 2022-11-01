@@ -91,7 +91,7 @@ public class Polling_StepDefinitions {
 
     @Then("user sees the checkbox is selected")
     public void user_sees_the_checkbox_is_selected() {
-        activityStreamPage.allowMultipleChoiceCheckbox.isSelected();
+        Assert.assertTrue(activityStreamPage.allowMultipleChoiceCheckbox.isSelected());
     }
 
     @When("user creates a poll leaving message title empty")
