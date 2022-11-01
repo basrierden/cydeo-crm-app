@@ -1,4 +1,4 @@
-@CRMLYEUG-1432
+@CRMLYEUG-1432 @polling
 Feature: CRM24 app polling feature
   User Story: As a user, I should be able to create a poll
                 by clicking on Poll tab under Active Stream.

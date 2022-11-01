@@ -2,6 +2,7 @@ package com.cydeo.crm.step_definitions;
 
 import com.cydeo.crm.pages.ActivityStreamPage;
 import com.cydeo.crm.pages.LoginPage;
+import com.cydeo.crm.utilities.BrowserUtils;
 import com.cydeo.crm.utilities.ConfigurationReader;
 import com.cydeo.crm.utilities.Driver;
 import com.github.javafaker.Faker;
@@ -37,28 +38,25 @@ public class Polling_StepDefinitions {
 
     @When("user clicks on the Add more button")
     public void user_clicks_on_the_add_persons_groups_or_department_button() {
+        activityStreamPage.allEmployeesDeleteButton.click();
         activityStreamPage.addMoreButton.click();
     }
 
 
     @When("user adds multiple contacts for polling")
     public void user_adds_multiple_contacts_for_polling() {
-        activityStreamPage.yasinak.click();
-        activityStreamPage.johndoe.click();
+        activityStreamPage.marketing2.click();
+        activityStreamPage.helpdesk22.click();
+        activityStreamPage.addMoreCloseButton.click();
+
     }
 
 
     @Then("user sees multiple contacts in the polling list")
     public void user_sees_multiple_contacts_in_the_polling_list() {
 
-        String expectedText1= "U593";
-        String expectedText2= "U512";
-
-        String actualText1= activityStreamPage.yasinakAdded.getAttribute("data-id");
-        String actualText2= activityStreamPage.johndoeAdded.getAttribute("data-id");
-
-        Assert.assertEquals(expectedText1,actualText1);
-        Assert.assertEquals(expectedText2,actualText2);
+        Assert.assertTrue(activityStreamPage.marketing2Added.isDisplayed());
+        Assert.assertTrue(activityStreamPage.helpdesk22Added.isDisplayed());
 
     }
 
@@ -81,7 +79,15 @@ public class Polling_StepDefinitions {
     @Then("delete question button is clickable on the page")
     public void delete_question_button_is_clickable_on_the_page() {
 
-        Assert.assertTrue(activityStreamPage.deleteQuestionButton.isDisplayed());
+
+        Assert.assertTrue(activityStreamPage.addedQuestion1.isDisplayed());
+        Assert.assertTrue(activityStreamPage.addedAnswer1.isDisplayed());
+        Assert.assertTrue(activityStreamPage.addedAnswer2.isDisplayed());
+
+        Assert.assertTrue(activityStreamPage.deleteAddedQuestionButton.isDisplayed());
+        Assert.assertTrue(activityStreamPage.deleteAddedQuestionButton.isEnabled());
+
+        activityStreamPage.deleteAddedQuestionButton.click();
 
     }
 

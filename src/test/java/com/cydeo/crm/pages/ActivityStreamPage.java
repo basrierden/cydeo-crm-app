@@ -26,16 +26,19 @@ public class ActivityStreamPage {
     public WebElement addMoreButton;
 
     @FindBy(xpath = "(//div[@class='bx-finder-box-item-t7-name'])[3]")
-    public WebElement yasinak;
+    public WebElement marketing2;
 
     @FindBy(xpath = "(//div[@class='bx-finder-box-item-t7-name'])[4]")
-    public WebElement johndoe;
+    public WebElement helpdesk22;
 
-    @FindBy(xpath = "(//span[@class='feed-add-post-destination-text'])[2]/..")
-    public WebElement yasinakAdded;
+    @FindBy (xpath = "//span[@class='popup-window-close-icon']")
+    public WebElement addMoreCloseButton;
 
-    @FindBy(xpath = "(//span[@class='feed-add-post-destination-text'])[3]/..")
-    public WebElement johndoeAdded;
+    @FindBy(xpath = "(//span[@class='feed-add-post-destination-text'])[1]")
+    public WebElement marketing2Added;
+
+    @FindBy(xpath = "(//span[@class='feed-add-post-destination-text'])[2]")
+    public WebElement helpdesk22Added;
 
     @FindBy(xpath = "//input[@id='question_0']")
     public WebElement question_0;
@@ -46,7 +49,7 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//input[@id='answer_0__1_']")
     public WebElement answer_0_Answer_2;
 
-    @FindBy(xpath = "//a[.='Add question']")
+    @FindBy(xpath = "//a[@class='vote-new-question-link addq']")
     public WebElement addQuestionButton;
 
     @FindBy(xpath = "//input[@id='question_1']")
@@ -58,8 +61,11 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//input[@id='answer_1__0_']")
     public WebElement addedAnswer2;
 
-    @FindBy(xpath = "(//label[@title='Delete question'])[2]")
+    @FindBy(xpath = "//label[@for='question_0']")
     public WebElement deleteQuestionButton;
+
+    @FindBy(xpath = "//label[@for='question_1']")
+    public WebElement deleteAddedQuestionButton;
 
     @FindBy(xpath = "//input[@id='multi_0']")
     public WebElement allowMultipleChoiceCheckbox;

@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
         features="src/test/resources/features",
         glue="com/cydeo/crm/step_definitions",
         dryRun =false,
-        tags = "@CRMLYEUG-1432",
+        tags = "@CRMLYEUG-1425",
         publish = false
 )
 
