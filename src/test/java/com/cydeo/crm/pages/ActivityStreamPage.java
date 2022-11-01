@@ -61,6 +61,9 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//input[@id='answer_1__0_']")
     public WebElement addedAnswer2;
 
+    @FindBy(xpath = "//input[@id='question_2']")
+    public WebElement addedQuestion2;
+
     @FindBy(xpath = "//label[@for='question_0']")
     public WebElement deleteQuestionButton;
 

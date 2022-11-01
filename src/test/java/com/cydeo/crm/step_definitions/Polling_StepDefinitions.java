@@ -89,6 +89,13 @@ public class Polling_StepDefinitions {
 
         activityStreamPage.deleteAddedQuestionButton.click();
 
+        activityStreamPage.addQuestionButton.click();
+
+        String expectedQuestionNumber="question_2";
+        String actualQuestionNumber=activityStreamPage.addedQuestion2.getAttribute("id");
+
+        Assert.assertTrue(expectedQuestionNumber.equals( actualQuestionNumber));
+
     }
 
 
