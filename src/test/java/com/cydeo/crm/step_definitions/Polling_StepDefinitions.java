@@ -4,6 +4,7 @@ import com.cydeo.crm.pages.ActivityStreamPage;
 import com.cydeo.crm.pages.LoginPage;
 import com.cydeo.crm.utilities.ConfigurationReader;
 import com.cydeo.crm.utilities.Driver;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,11 +13,15 @@ import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Locale;
+
 public class Polling_StepDefinitions {
 
     LoginPage loginPage= new LoginPage();
     ActivityStreamPage activityStreamPage = new ActivityStreamPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+    Faker faker = new Faker();
+
 
     @Given("user is on Activity Stream page and clicks on the POLL tab")
     public void user_is_on_activity_stream_page_and_clicks_on_the_poll_tab() {
@@ -115,12 +120,16 @@ public class Polling_StepDefinitions {
     @When("user creates a poll without adding persons for the poll")
     public void user_creates_a_poll_without_adding_persons_for_the_poll() {
         Driver.getDriver().switchTo().frame(activityStreamPage.messageTitleFrame);
-        activityStreamPage.frameBody.sendKeys("Message title 1");
+        String messageTitle = faker.lorem().word();
+        activityStreamPage.frameBody.sendKeys(messageTitle);
         Driver.getDriver().switchTo().parentFrame();
         activityStreamPage.allEmployeesDeleteButton.click();
-        activityStreamPage.question_0.sendKeys("Question 1?");
-        activityStreamPage.answer_0_Answer_1.sendKeys("Good");
-        activityStreamPage.answer_0_Answer_2.sendKeys("Fine");
+        String question= faker.lorem().characters();
+        activityStreamPage.question_0.sendKeys(question);
+        String country1= faker.country().capital();
+        String country2= faker.country().currency();
+        activityStreamPage.answer_0_Answer_1.sendKeys(country1);
+        activityStreamPage.answer_0_Answer_2.sendKeys(country2);
         activityStreamPage.sendButton.click();
     }
 
@@ -139,10 +148,13 @@ public class Polling_StepDefinitions {
     public void user_creates_a_poll_without_question_text() {
 
         Driver.getDriver().switchTo().frame(activityStreamPage.messageTitleFrame);
-        activityStreamPage.frameBody.sendKeys("Message title 2");
+        String messageTitle = faker.lorem().word();
+        activityStreamPage.frameBody.sendKeys(messageTitle);
         Driver.getDriver().switchTo().parentFrame();
-        activityStreamPage.answer_0_Answer_1.sendKeys("Good");
-        activityStreamPage.answer_0_Answer_2.sendKeys("Better");
+        String country1= faker.country().capital();
+        String country2= faker.country().currency();
+        activityStreamPage.answer_0_Answer_1.sendKeys(country1);
+        activityStreamPage.answer_0_Answer_2.sendKeys(country2);
         activityStreamPage.sendButton.click();
 
     }
@@ -157,19 +169,22 @@ public class Polling_StepDefinitions {
 
     }
 
+    String questionUnique= faker.lorem().characters();
     @When("user creates a poll without answers")
     public void user_creates_a_poll_without_answers() {
         Driver.getDriver().switchTo().frame(activityStreamPage.messageTitleFrame);
-        activityStreamPage.frameBody.sendKeys("Message title 3");
+        String messageTitle = faker.lorem().word();
+        activityStreamPage.frameBody.sendKeys(messageTitle);
         Driver.getDriver().switchTo().parentFrame();
-        activityStreamPage.question_0.sendKeys("Question 3?");
+
+        activityStreamPage.question_0.sendKeys(questionUnique);
         activityStreamPage.sendButton.click();
     }
 
 
     @Then("the question has no answers error message is displayed on the page")
     public void the_question_has_no_answers_error_message_is_displayed_on_the_page() {
-        String expectedErrorMessage= "The question \"Question 3?\" has no answers.";
+        String expectedErrorMessage= "The question \"" + questionUnique + "\" has no answers.";
         String actualErrorMessage= activityStreamPage.mandatoryFieldErrorMessage.getText();
 
         Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
@@ -180,10 +195,13 @@ public class Polling_StepDefinitions {
     @When("user creates a poll with only one answer")
     public void user_creates_a_poll_with_only_one_answer() {
         Driver.getDriver().switchTo().frame(activityStreamPage.messageTitleFrame);
-        activityStreamPage.frameBody.sendKeys("Message title 4");
+        String messageTitle = faker.lorem().word();
+        activityStreamPage.frameBody.sendKeys(messageTitle);
         Driver.getDriver().switchTo().parentFrame();
-        activityStreamPage.question_0.sendKeys("Question 4?");
-        activityStreamPage.answer_0_Answer_1.sendKeys("Amazing");
+        String question= faker.lorem().characters();
+        activityStreamPage.question_0.sendKeys(question);
+        String country1= faker.country().capital();
+        activityStreamPage.answer_0_Answer_1.sendKeys(country1);
         activityStreamPage.sendButton.click();
     }
 
