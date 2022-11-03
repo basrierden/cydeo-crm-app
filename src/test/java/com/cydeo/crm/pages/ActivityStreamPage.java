@@ -89,4 +89,11 @@ public class ActivityStreamPage {
 
     @FindBy(xpath = "//span[@class='feed-add-info-text']")
     public WebElement mandatoryFieldErrorMessage;
+
+
+
+
+
+
+   
 }
